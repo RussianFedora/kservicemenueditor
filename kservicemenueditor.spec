@@ -35,8 +35,8 @@ desktop-file-validate %{buildroot}/%{_desktopdir}/servicemenueditor.desktop
 %defattr(-,root,root)
 %{_bindir}/servicemenueditor
 %{_desktopdir}/servicemenueditor.desktop
-%dir %{_kde4_appsdir}/servicemenueditor
 %{_kde4_appsdir}/servicemenueditor/*
+%dir %{_kde4_appsdir}/servicemenueditor
 
 %clean
 rm -rf $RPM_BUILD_ROOT
