@@ -28,7 +28,7 @@ install -D -m 755 -p servicemenueditor $RPM_BUILD_ROOT/%{_bindir}/servicemenuedi
 install -D -m 644 -p *.ui $RPM_BUILD_ROOT/%{_kde4_appsdir}/servicemenueditor/
 
 desktop-file-install --delete-original		\
-	--dir ${RPM_BUILD_ROOT}%{_desktopdir} servicemenueditor.desktop
+	--dir ${RPM_BUILD_ROOT}/%{_desktopdir} servicemenueditor.desktop
 desktop-file-validate %{buildroot}/%{_desktopdir}/servicemenueditor.desktop
 
 %files
