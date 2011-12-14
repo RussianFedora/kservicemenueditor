@@ -1,6 +1,6 @@
 Name: kservicemenueditor
 Version: 0.2a
-Release: 1%{?dist}.R
+Release: 2%{?dist}.R
 Summary: KDE Service Menu Editor
 Group: Applications/Editors
 License: GPL
@@ -22,25 +22,28 @@ Editor of the Dolphin`s content menu.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-mkdir -p $RPM_BUILD_ROOT/%{_desktopdir}
-mkdir -p $RPM_BUILD_ROOT/%{_kde4_appsdir}/servicemenueditor/
-install -D -m 755 -p servicemenueditor $RPM_BUILD_ROOT/%{_bindir}/servicemenueditor
-install -D -m 644 -p *.ui $RPM_BUILD_ROOT/%{_kde4_appsdir}/servicemenueditor/
+mkdir -p $RPM_BUILD_ROOT%{_datadir}/applications
+mkdir -p $RPM_BUILD_ROOT%{_datadir}/kde4/apps/servicemenueditor
+install -D -m 755 -p servicemenueditor $RPM_BUILD_ROOT%{_bindir}/servicemenueditor
+install -D -m 644 -p *.ui $RPM_BUILD_ROOT%{_datadir}/kde4/apps/servicemenueditor
 
 desktop-file-install --delete-original		\
-	--dir ${RPM_BUILD_ROOT}/%{_desktopdir} servicemenueditor.desktop
-desktop-file-validate %{buildroot}/%{_desktopdir}/servicemenueditor.desktop
+	--dir ${RPM_BUILD_ROOT}%{_datadir}/applications servicemenueditor.desktop
+desktop-file-validate %{buildroot}%{_datadir}/applications/servicemenueditor.desktop
 
 %files
 %defattr(-,root,root)
 %{_bindir}/servicemenueditor
-/%{_desktopdir}/servicemenueditor.desktop
-/%{_kde4_appsdir}/servicemenueditor/*
-%dir /%{_kde4_appsdir}/servicemenueditor
+%{_datadir}/applications/servicemenueditor.desktop
+%{_datadir}/kde4/apps/servicemenueditor/*
+%dir %{_datadir}/kde4/apps/servicemenueditor
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %changelog
+* Wed Dec 14 2011 Fl@sh <kaperang07@gmail.com> - 0.2a-2.R
+- fixed path
+
 * Mon Dec 5 2011 Fl@sh <kaperang07@gmail.com> - 0.2a-1.R
 - Initial build
